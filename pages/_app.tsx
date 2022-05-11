@@ -6,11 +6,11 @@ import { Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
+import { Footer } from '../components/Footer/Footer'
 const navigation = [
   { name: 'Product', href: '#' },
   { name: 'Blogs', href: '/blogs' },
-  { name: 'Marketplace', href: '#' },
-  { name: 'Company', href: '#' },
+  { name: 'Company', href: 'https://stripe.com/' },
 ]
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -137,6 +137,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <main className='mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-32'>
             <Component {...pageProps} />
           </main>
+          <Footer />
         </div>
       </div>
     </>
