@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           </svg>
         </div>
 
-        <div className='relative pt-6 pb-16 sm:pb-24 lg:pb-32'>
+        <div className='relative pt-6 pb-8 sm:pb-16 lg:pb-24'>
           <Popover>
             <nav
               className='relative max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6'
