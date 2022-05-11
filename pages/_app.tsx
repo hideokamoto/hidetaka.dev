@@ -10,6 +10,7 @@ import { Footer } from '../components/Footer/Footer'
 const navigation = [
   { name: 'Product', href: '#' },
   { name: 'Blogs', href: '/blogs' },
+  { name: 'Events', href: '/events' },
   { name: 'Company', href: 'https://stripe.com/' },
 ]
 
@@ -134,7 +135,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </Transition>
           </Popover>
 
-          <main className='mt-16 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-32'>
+          <main className='mt-2 mx-auto max-w-7xl px-4 sm:mt-24 sm:px-6 lg:mt-8'>
             <Component {...pageProps} />
           </main>
           <Footer />
