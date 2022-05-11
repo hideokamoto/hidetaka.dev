@@ -1,10 +1,9 @@
-import dayjs from 'dayjs'
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { UpcomingEvents } from '../components/Events/UpcomingEvents'
 import { Hero } from '../components/Hero/Hero'
 import { Interest } from '../components/Profile/Interests'
 import { Profile } from '../components/Profile/Profile'
-import { microCMSClient, MicroCMSEventsRecord } from '../lib/microcms'
+import { listUpcomingEvents, MicroCMSEventsRecord } from '../lib/microcms'
 
 const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   return (
@@ -26,18 +25,9 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
 export const getStaticProps: GetStaticProps<{
   events: MicroCMSEventsRecord[]
 }> = async () => {
-  const thisMonth = dayjs().format('YYYY-MM')
-  const { contents: events } = await microCMSClient.get<{
-    contents: MicroCMSEventsRecord[]
-  }>({
-    endpoint: 'events',
-    queries: {
-      filters: `date[greater_than]${thisMonth}`,
-    },
-  })
   return {
     props: {
-      events,
+      events: await listUpcomingEvents(),
     },
     revalidate: 1 * 60 * 60,
   }

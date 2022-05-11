@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { createClient } from 'microcms-js-sdk'
 
 export const microCMSClient = createClient({
@@ -19,4 +20,30 @@ export type MicroCMSEventsRecord = MicroCMSRecord & {
   description?: string
   slide_url?: string
   blog_url?: string
+}
+
+export const listEndedEvents = async () => {
+  const thisMonth = dayjs().format('YYYY-MM')
+  const { contents: events } = await microCMSClient.get<{
+    contents: MicroCMSEventsRecord[]
+  }>({
+    endpoint: 'events',
+    queries: {
+      filters: `date[less_than]${thisMonth}`,
+    },
+  })
+  return events
+}
+
+export const listUpcomingEvents = async () => {
+  const thisMonth = dayjs().format('YYYY-MM')
+  const { contents: events } = await microCMSClient.get<{
+    contents: MicroCMSEventsRecord[]
+  }>({
+    endpoint: 'events',
+    queries: {
+      filters: `date[greater_than]${thisMonth}`,
+    },
+  })
+  return events
 }
