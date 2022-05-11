@@ -20,6 +20,7 @@ export type MicroCMSEventsRecord = MicroCMSRecord & {
   description?: string
   slide_url?: string
   blog_url?: string
+  session_title?: string
 }
 
 export const listEndedEvents = async () => {
