@@ -8,7 +8,7 @@ import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { Footer } from '../components/Footer/Footer'
 const navigation = [
-  { name: 'Product', href: '#' },
+  //{ name: 'Product', href: '#' },
   { name: 'Blogs', href: '/blogs' },
   { name: 'Events', href: '/events' },
   { name: 'Company', href: 'https://stripe.com/' },
