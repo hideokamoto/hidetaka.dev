@@ -10,7 +10,7 @@ export const EventHistories: FC<{
       <div className='relative max-w-lg mx-auto divide-y-2 divide-gray-200 lg:max-w-7xl'>
         <div>
           <h2 className='text-3xl tracking-tight font-extrabold text-gray-900 sm:text-4xl'>
-            Recent Events
+            Recent Events &amp; talks
           </h2>
         </div>
         <EventItems events={events} />

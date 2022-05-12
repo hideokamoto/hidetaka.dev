@@ -21,7 +21,7 @@ export const Profile: FC = () => {
           </div>
           <div className='sm:col-span-1'>
             <dt className='text-sm font-medium text-gray-500'>Locations</dt>
-            <dd className='mt-1 text-sm text-gray-900'>Osaka, Japan</dd>
+            <dd className='mt-1 text-sm text-gray-900'>Osaka and Tokyo, Japan</dd>
           </div>
           <div className='sm:col-span-2'>
             <dt className='text-sm font-medium text-gray-500'>About</dt>

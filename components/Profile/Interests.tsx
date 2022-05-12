@@ -3,25 +3,31 @@ import { FC } from 'react'
 
 const features = [
   {
-    name: 'JavaScript/TypeScript',
-    description: 'Developing Node.js or frontend application.',
+    name: 'JavaScript / TypeScript',
+    description:
+      'Developing with frontend applications. And also make any server-site applciation with Node.js',
   },
-  { name: 'React/Stencil', description: 'Creating UI component.' },
+  { name: 'React/Stencil', description: 'Creating UI components for rich user experiences.' },
   { name: 'Next.js/Gatsby', description: 'Making own website using these Jamstack frameworks.' },
   {
     name: 'AWS(Backend)',
-    description: 'Using Serverless stack to deploy and run application backend.',
+    description: 'Using the AWS resources to deploy and run application backend.',
   },
   { name: 'AWS Amplify/Netlify', description: 'Deploy web application.' },
   {
     name: 'WordPress',
-    description: 'Publishing anything by using this. And contributing the OSS projects.',
+    description:
+      'Publishing anything online and this. And contributing to Open Source project community.',
   },
   {
-    name: 'Alexa/LINE',
-    description: 'Making VUI or chat application to communicate with the customers.',
+    name: 'Messaging & Voice UI',
+    description:
+      'Crafting boice and chat apps to communicate with customers. Across Alexa,Line,Amazon Lex, etc...',
   },
-  { name: 'Stripe', description: 'Earn Money using this API.' },
+  {
+    name: 'Online payment',
+    description: 'Build your online business with Stripe API and developer tools',
+  },
 ]
 
 export const Interest: FC = () => {
@@ -32,9 +38,11 @@ export const Interest: FC = () => {
           <h2 className='text-base font-semibold text-indigo-600 uppercase tracking-wide'>
             Interests
           </h2>
-          <p className='mt-2 text-3xl font-extrabold text-gray-900'>Speak&amp;Writable topics</p>
+          <p className='mt-2 text-3xl font-extrabold text-gray-900'>
+            Topic for speaking &amp; writing
+          </p>
           <p className='mt-4 text-lg text-gray-500'>
-            I have an experience to use these tools/framework and services.
+            I love to teach about these tools/frameworks and services.
           </p>
         </div>
         <div className='mt-12 lg:mt-0 lg:col-span-2'>
