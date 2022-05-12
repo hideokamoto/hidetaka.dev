@@ -1,4 +1,3 @@
-import dayjs from 'dayjs'
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { EventHistories } from '../components/Events/EventHistory'
 import { UpcomingEvents } from '../components/Events/UpcomingEvents'
@@ -17,10 +16,16 @@ export const getStaticProps: GetStaticProps<{
   endedEvents: MicroCMSEventsRecord[]
   upcomingEvents: MicroCMSEventsRecord[]
 }> = async () => {
+  const endedEvents = await listEndedEvents()
+  const upcomingEvents = await listUpcomingEvents()
   return {
     props: {
-      endedEvents: await listEndedEvents(),
-      upcomingEvents: await listUpcomingEvents(),
+      endedEvents: endedEvents.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      }),
+      upcomingEvents: upcomingEvents.sort((a, b) => {
+        return new Date(b.date).getTime() - new Date(a.date).getTime();
+      }),
     },
     revalidate: 1 * 60 * 60,
   }
