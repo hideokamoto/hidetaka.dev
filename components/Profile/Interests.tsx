@@ -1,4 +1,4 @@
-import { BookOpenIcon, CheckIcon } from '@heroicons/react/outline'
+import { BookOpenIcon } from '@heroicons/react/outline'
 import { FC } from 'react'
 
 const features = [

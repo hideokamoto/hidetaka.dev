@@ -21,10 +21,10 @@ export const getStaticProps: GetStaticProps<{
   return {
     props: {
       endedEvents: endedEvents.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
       }),
       upcomingEvents: upcomingEvents.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime();
+        return new Date(b.date).getTime() - new Date(a.date).getTime()
       }),
     },
     revalidate: 1 * 60 * 60,
