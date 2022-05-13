@@ -1,11 +1,12 @@
 import { renderers } from '@markdoc/markdoc'
 import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
-import React from 'react'
+import React, { FC } from 'react'
 import { BookList } from '../components/Books/List'
 import { UpcomingEvents } from '../components/Events/UpcomingEvents'
 import { Hero } from '../components/Hero/Hero'
 import { ExternalLink } from '../components/markdoc/ExternalLink'
+import { MarkdocContent } from '../components/markdoc/MarkdocContent'
 import { Interest } from '../components/Profile/Interests'
 import { Profile } from '../components/Profile/Profile'
 import { loadMarkdownFile } from '../lib/markdocs/loader'
@@ -20,17 +21,15 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
   return (
     <div className='mt-6 lg:mt-24'>
       <Hero>
-        {renderers.react(JSON.parse(props.profiles.hero), React, {
-          components: {
-            ExternalLink,
-          },
-        })}
+        <MarkdocContent content={props.profiles.hero} />
       </Hero>
       <div className='mt-10'>
         <Interest />
       </div>
       <div className='my-10'>
-        <Profile />
+        <Profile
+          speakerBio={props.profiles.speakerBio}
+        />
       </div>
       <div className='my-0'>
         <BookList books={props.featuredBooks} title='Featured books'>
@@ -55,7 +54,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
 
 export const getStaticProps: GetStaticProps<{
   profiles: {
-    hero: string
+    hero: string;
+    speakerBio: string;
   }
   events: MicroCMSEventsRecord[]
   featuredBooks: MicroCMSProjectsRecord[]
@@ -66,8 +66,12 @@ export const getStaticProps: GetStaticProps<{
     ...heroContent[0].attributes,
     className: 'mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl',
   }
+
+
+  const speakerBio = loadMarkdownFile('contents/profiles/speakerProfile.md')
   const profiles = {
     hero: JSON.stringify(heroContent),
+    speakerBio: JSON.stringify(speakerBio),
   }
 
   const featuredBooks = await listFeaturedBooks()

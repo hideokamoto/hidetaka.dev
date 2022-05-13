@@ -29,7 +29,7 @@ export const socialIcons: Array<{
   },
   {
     name: 'GitHub',
-    href: 'ttps://github.com/hideokamoto',
+    href: 'https://github.com/hideokamoto',
     icon: (props) => (
       <svg fill='currentColor' viewBox='0 0 24 24' {...props}>
         <path

@@ -1,6 +1,11 @@
 import { FC } from 'react'
+import { MarkdocContent } from '../markdoc/MarkdocContent';
 
-export const Profile: FC = () => {
+export const Profile: FC<{
+  speakerBio: string;
+}> = ({
+  speakerBio,
+}) => {
   return (
     <div className='bg-white shadow-lg overflow-hidden sm:rounded-lg'>
       <div className='px-4 py-5 sm:px-6'>
@@ -23,17 +28,17 @@ export const Profile: FC = () => {
             <dt className='text-sm font-medium text-gray-500'>Locations</dt>
             <dd className='mt-1 text-sm text-gray-900'>Osaka and Tokyo, Japan</dd>
           </div>
+          <div className='sm:col-span-1'>
+            <dt className='text-sm font-medium text-gray-500'>Awards</dt>
+            <dd className='mt-1 text-sm text-gray-900'>
+              <p><a className="text-underline text-indigo-600" href="https://aws.amazon.com/jp/blogs/news/aws-samurai-2017/">AWS Samurai 2017</a></p>
+              <p><a className="text-underline text-indigo-600" href="https://developer.amazon.com/en-US/alexa/champions/hidetaka-okamoto">Alexa Champions</a></p>
+            </dd>
+          </div>
           <div className='sm:col-span-2'>
             <dt className='text-sm font-medium text-gray-500'>About</dt>
             <dd className='mt-1 text-sm text-gray-900'>
-              <ul>
-                <li>Helping developers integrate Stripe.</li>
-                <li>Contributing to Stripe Samples.</li>
-                <li>
-                  Contribution to several OSS using or Stripe in several languages: JavaScript, PHP,
-                  and more...
-                </li>
-              </ul>
+              <MarkdocContent content={speakerBio} />
             </dd>
           </div>
           <div className='sm:col-span-2'>
