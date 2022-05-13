@@ -1,4 +1,5 @@
-I'm a JavaScript developer building Serverless web application on the Jamstack.In addition, I work with founders engineers as a Developer Advocate at {% externalLink
+I'm a JavaScript developer building Serverless web applications on the Jamstack. 
+In addition, I work with founders and developers as a Developer Advocate at {% externalLink
     class="text-underline text-indigo-600"
     href="https://stripe.com"
     label="Stripe"

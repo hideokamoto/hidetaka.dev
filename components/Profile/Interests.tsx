@@ -5,28 +5,28 @@ const features = [
   {
     name: 'JavaScript / TypeScript',
     description:
-      'Developing with frontend applications. And also make any server-site applciation with Node.js',
+      'Developing frontend and server-side applications.'
   },
-  { name: 'React/Stencil', description: 'Creating UI components for rich user experiences.' },
-  { name: 'Next.js/Gatsby', description: 'Making own website using these Jamstack frameworks.' },
+  { name: 'React / Stencil', description: 'Creating UI components for rich user experiences.' },
+  { name: 'Next.js/Gatsby', description: 'Making websites using these Jamstack frameworks.' },
   {
-    name: 'AWS(Backend)',
-    description: 'Using the AWS resources to deploy and run application backend.',
+    name: 'AWS (Backend)',
+    description: 'Using AWS resources to deploy and run application backends.',
   },
-  { name: 'AWS Amplify/Netlify', description: 'Deploy web application.' },
+  { name: 'AWS Amplify / Netlify', description: 'Deploy web applications on serverless platforms.' },
   {
     name: 'WordPress',
     description:
-      'Publishing anything online and this. And contributing to Open Source project community.',
+      'Publishing anything online and contributing to Open Source community projects.',
   },
   {
     name: 'Messaging & Voice UI',
     description:
-      'Crafting boice and chat apps to communicate with customers. Across Alexa,Line,Amazon Lex, etc...',
+      'Crafting voice and chat apps to communicate with customers on Alexa, Line, Amazon Lex, etc...',
   },
   {
-    name: 'Online payment',
-    description: 'Build your online business with Stripe API and developer tools',
+    name: 'Online payments',
+    description: 'Build your online business with the Stripe API and developer tools',
   },
 ]
 
@@ -42,7 +42,7 @@ export const Interest: FC = () => {
             Topic for speaking &amp; writing
           </p>
           <p className='mt-4 text-lg text-gray-500'>
-            I love to teach about these tools/frameworks and services.
+            I love to teach and present about these tools, frameworks, and services.
           </p>
         </div>
         <div className='mt-12 lg:mt-0 lg:col-span-2'>
