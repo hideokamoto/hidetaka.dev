@@ -10,7 +10,7 @@ import { Footer } from '../components/Footer/Footer'
 import { SocialIcons } from '../components/Profile/SocialIcons'
 const navigation = [
   //{ name: 'Product', href: '#' },
-  { name: 'Books', href: '/books' },
+  { name: 'Books', href: '/projects/books' },
   { name: 'Blog', href: '/blogs' },
   { name: 'Events', href: '/events' },
   { name: 'Stripe', href: 'https://stripe.com/' },

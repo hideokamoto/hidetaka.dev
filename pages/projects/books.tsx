@@ -1,8 +1,8 @@
 import dayjs from 'dayjs'
 import { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import { FC } from 'react'
-import { classNames } from '../lib/classNames'
-import { listBooks, MicroCMSProjectsRecord } from '../lib/microcms'
+import { classNames } from '../../lib/classNames'
+import { listBooks, MicroCMSProjectsRecord } from '../../lib/microcms'
 
 const Book: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({ books }) => {
   return (
@@ -42,22 +42,6 @@ export default Book
 export const BookListItem: FC<{
   book: MicroCMSProjectsRecord
 }> = ({ book }) => {
-  const post = {
-    title: 'Improve your customer experience',
-    href: '#',
-    category: { name: 'Case Study', href: '#', color: 'bg-green-100 text-green-800' },
-    description:
-      'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ab iure iusto fugiat commodi sequi.',
-    date: 'Feb 12, 2020',
-    datetime: '2020-02-12',
-    author: {
-      name: 'Easer Collins',
-      href: '#',
-      imageUrl:
-        'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-    },
-    readingTime: '11 min',
-  }
   return (
     <div
       key={book.title}
