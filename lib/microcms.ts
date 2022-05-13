@@ -1,10 +1,10 @@
 import dayjs from 'dayjs'
 import { createClient } from 'microcms-js-sdk'
 
-export const microCMSClient = createClient({
+export const microCMSClient = process.env.MICROCMS_API_KEY ? createClient({
   serviceDomain: 'hidetaka',
   apiKey: process.env.MICROCMS_API_KEY as string,
-})
+}) : undefined
 
 export type MicroCMSRecord = {
   id: string
@@ -49,6 +49,7 @@ export type MicroCMSProjectsRecord = MicroCMSRecord & {
 
 export const listEndedEvents = async () => {
   const thisMonth = dayjs().format('YYYY-MM')
+  if (!microCMSClient) return []
   const { contents: events } = await microCMSClient.get<{
     contents: MicroCMSEventsRecord[]
   }>({
@@ -64,6 +65,7 @@ export const listEndedEvents = async () => {
 
 export const listUpcomingEvents = async () => {
   const thisMonth = dayjs().format('YYYY-MM')
+  if (!microCMSClient) return []
   const { contents: events } = await microCMSClient.get<{
     contents: MicroCMSEventsRecord[]
   }>({
@@ -77,6 +79,7 @@ export const listUpcomingEvents = async () => {
 }
 
 export const listBooks = async () => {
+  if (!microCMSClient) return []
   const { contents: events } = await microCMSClient.get<{
     contents: MicroCMSProjectsRecord[]
   }>({
@@ -90,6 +93,7 @@ export const listBooks = async () => {
 }
 
 export const listFeaturedBooks = async () => {
+  if (!microCMSClient) return []
   return [
     await microCMSClient.get<MicroCMSProjectsRecord>({
       endpoint: 'projects',
