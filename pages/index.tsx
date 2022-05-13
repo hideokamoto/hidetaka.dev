@@ -27,9 +27,7 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
         <Interest />
       </div>
       <div className='my-10'>
-        <Profile
-          speakerBio={props.profiles.speakerBio}
-        />
+        <Profile speakerBio={props.profiles.speakerBio} />
       </div>
       <div className='my-0'>
         <BookList books={props.featuredBooks} title='Featured books'>
@@ -54,8 +52,8 @@ const Home: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
 
 export const getStaticProps: GetStaticProps<{
   profiles: {
-    hero: string;
-    speakerBio: string;
+    hero: string
+    speakerBio: string
   }
   events: MicroCMSEventsRecord[]
   featuredBooks: MicroCMSProjectsRecord[]
@@ -66,7 +64,6 @@ export const getStaticProps: GetStaticProps<{
     ...heroContent[0].attributes,
     className: 'mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl',
   }
-
 
   const speakerBio = loadMarkdownFile('contents/profiles/speakerProfile.md')
   const profiles = {

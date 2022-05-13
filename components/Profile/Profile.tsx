@@ -1,11 +1,9 @@
 import { FC } from 'react'
-import { MarkdocContent } from '../markdoc/MarkdocContent';
+import { MarkdocContent } from '../markdoc/MarkdocContent'
 
 export const Profile: FC<{
-  speakerBio: string;
-}> = ({
-  speakerBio,
-}) => {
+  speakerBio: string
+}> = ({ speakerBio }) => {
   return (
     <div className='bg-white shadow-lg overflow-hidden sm:rounded-lg'>
       <div className='px-4 py-5 sm:px-6'>
@@ -13,35 +11,64 @@ export const Profile: FC<{
         <p className='mt-1 max-w-2xl text-sm text-gray-500'>Speaker information.</p>
       </div>
       <div className='border-t border-gray-200 px-4 py-5 sm:px-6'>
-        <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
-          <div className='sm:col-span-1'>
-            <dt className='text-sm font-medium text-gray-500'>Full name</dt>
-            <dd className='mt-1 text-sm text-gray-900'>Hidetaka Okamoto</dd>
+        <div className='grid grid-cols-1 md:grid-cols-12 gap-x-4 mb-8'>
+          <div className='md:col-span-4'>
+            <img
+              src='https://secure.gravatar.com/avatar/75486cbfd37125f121cf4a6c5614601c?size=800'
+              alt='profile image'
+              width={400}
+              height={400}
+            />
           </div>
-          <div className='sm:col-span-1'>
-            <dt className='text-sm font-medium text-gray-500'>Preferred Name</dt>
-            <dd className='mt-1 text-sm text-gray-900'>
-              Hide <small>(Pronounced “Hee Day”)</small>
-            </dd>
+          <div className='md:col-span-8'>
+            <div className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
+              <dl className='sm:col-span-1'>
+                <dt className='text-sm font-medium text-gray-500'>Full name</dt>
+                <dd className='mt-1 text-sm text-gray-900'>Hidetaka Okamoto</dd>
+              </dl>
+              <dl className='sm:col-span-1'>
+                <dt className='text-sm font-medium text-gray-500'>Preferred Name</dt>
+                <dd className='mt-1 text-sm text-gray-900'>
+                  Hide <small>(Pronounced “Hee Day”)</small>
+                </dd>
+              </dl>
+              <dl className='sm:col-span-1'>
+                <dt className='text-sm font-medium text-gray-500'>Locations</dt>
+                <dd className='mt-1 text-sm text-gray-900'>Osaka and Tokyo, Japan</dd>
+              </dl>
+              <dl className='sm:col-span-1'>
+                <dt className='text-sm font-medium text-gray-500'>Awards</dt>
+                <dd className='mt-1 text-sm text-gray-900'>
+                  <p>
+                    <a
+                      className='text-underline text-indigo-600'
+                      href='https://aws.amazon.com/jp/blogs/news/aws-samurai-2017/'
+                    >
+                      AWS Samurai 2017
+                    </a>
+                  </p>
+                  <p>
+                    <a
+                      className='text-underline text-indigo-600'
+                      href='https://developer.amazon.com/en-US/alexa/champions/hidetaka-okamoto'
+                    >
+                      Alexa Champions
+                    </a>
+                  </p>
+                </dd>
+              </dl>
+              <dl className='sm:col-span-2'>
+                <dt className='text-sm font-medium text-gray-500'>About</dt>
+                <dd className='mt-1 text-sm text-gray-900'>
+                  <MarkdocContent content={speakerBio} />
+                </dd>
+              </dl>
+            </div>
           </div>
-          <div className='sm:col-span-1'>
-            <dt className='text-sm font-medium text-gray-500'>Locations</dt>
-            <dd className='mt-1 text-sm text-gray-900'>Osaka and Tokyo, Japan</dd>
-          </div>
-          <div className='sm:col-span-1'>
-            <dt className='text-sm font-medium text-gray-500'>Awards</dt>
-            <dd className='mt-1 text-sm text-gray-900'>
-              <p><a className="text-underline text-indigo-600" href="https://aws.amazon.com/jp/blogs/news/aws-samurai-2017/">AWS Samurai 2017</a></p>
-              <p><a className="text-underline text-indigo-600" href="https://developer.amazon.com/en-US/alexa/champions/hidetaka-okamoto">Alexa Champions</a></p>
-            </dd>
-          </div>
-          <div className='sm:col-span-2'>
-            <dt className='text-sm font-medium text-gray-500'>About</dt>
-            <dd className='mt-1 text-sm text-gray-900'>
-              <MarkdocContent content={speakerBio} />
-            </dd>
-          </div>
-          <div className='sm:col-span-2'>
+        </div>
+
+        <div className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
+          <dl className='sm:col-span-2'>
             <dt className='text-sm font-medium text-gray-500'>Social</dt>
             <dd className='mt-1 text-sm text-gray-900'>
               <ul
@@ -151,8 +178,8 @@ export const Profile: FC<{
                 </li>
               </ul>
             </dd>
-          </div>
-        </dl>
+          </dl>
+        </div>
       </div>
     </div>
   )
