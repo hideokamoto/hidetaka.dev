@@ -85,3 +85,16 @@ export const listBooks = async () => {
   })
   return events
 }
+
+export const listFeaturedBooks = async () => {
+  return [
+    await microCMSClient.get<MicroCMSProjectsRecord>({
+      endpoint: 'projects',
+      contentId: '48xxv5o8vt8j',
+    }),
+    await microCMSClient.get<MicroCMSProjectsRecord>({
+      endpoint: 'projects',
+      contentId: 'iutgcn7l3ad',
+    }),
+  ]
+}
