@@ -11,6 +11,7 @@ export type MicroCMSRecord = {
   createdAt: string
   updatedAt: string
   publishedAt: string
+  revisedAt?: string
 }
 export type MicroCMSEventsRecord = MicroCMSRecord & {
   title: string
@@ -21,6 +22,29 @@ export type MicroCMSEventsRecord = MicroCMSRecord & {
   slide_url?: string
   blog_url?: string
   session_title?: string
+}
+export type MicroCMSImageObject = {
+  url: string
+  height: number
+  width: number
+}
+
+export type MicroCMSProjectType =
+  | 'books'
+  | 'owned_oss'
+  | 'oss_contribution'
+  | 'community_activities'
+
+export type MicroCMSProjectsRecord = MicroCMSRecord & {
+  title: string
+  url: string
+  published_at?: string
+  tags: string[]
+  project_type: [MicroCMSProjectType]
+  affiliate_link?: string
+  image?: MicroCMSImageObject
+  lang: ['Japanese' | 'English']
+  is_solo: boolean
 }
 
 export const listEndedEvents = async () => {
@@ -44,6 +68,19 @@ export const listUpcomingEvents = async () => {
     endpoint: 'events',
     queries: {
       filters: `date[greater_than]${thisMonth}`,
+    },
+  })
+  return events
+}
+
+export const listBooks = async () => {
+  const { contents: events } = await microCMSClient.get<{
+    contents: MicroCMSProjectsRecord[]
+  }>({
+    endpoint: 'projects',
+    queries: {
+      orders: '-published_at',
+      filters: `project_type[contains]books`,
     },
   })
   return events

@@ -7,10 +7,11 @@ import { Popover, Transition } from '@headlessui/react'
 import { MenuIcon, XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { Footer } from '../components/Footer/Footer'
-import { SocialIcons, socialIcons } from '../components/Profile/SocialIcons'
+import { SocialIcons } from '../components/Profile/SocialIcons'
 const navigation = [
   //{ name: 'Product', href: '#' },
-  { name: 'Writing', href: '/blogs' },
+  { name: 'Books', href: '/books' },
+  { name: 'Blog', href: '/blogs' },
   { name: 'Events', href: '/events' },
   { name: 'Stripe', href: 'https://stripe.com/' },
 ]

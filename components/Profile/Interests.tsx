@@ -4,8 +4,7 @@ import { FC } from 'react'
 const features = [
   {
     name: 'JavaScript / TypeScript',
-    description:
-      'Developing frontend and server-side applications.'
+    description: 'Developing frontend and server-side applications.',
   },
   { name: 'React / Stencil', description: 'Creating UI components for rich user experiences.' },
   { name: 'Next.js/Gatsby', description: 'Making websites using these Jamstack frameworks.' },
@@ -13,11 +12,13 @@ const features = [
     name: 'AWS (Backend)',
     description: 'Using AWS resources to deploy and run application backends.',
   },
-  { name: 'AWS Amplify / Netlify', description: 'Deploy web applications on serverless platforms.' },
+  {
+    name: 'AWS Amplify / Netlify',
+    description: 'Deploy web applications on serverless platforms.',
+  },
   {
     name: 'WordPress',
-    description:
-      'Publishing anything online and contributing to Open Source community projects.',
+    description: 'Publishing anything online and contributing to Open Source community projects.',
   },
   {
     name: 'Messaging & Voice UI',
