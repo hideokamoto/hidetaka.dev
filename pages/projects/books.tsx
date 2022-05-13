@@ -14,6 +14,7 @@ export const getStaticProps: GetStaticProps<{
     props: {
       books,
     },
+    revalidate: 1 * 60 * 60,
   }
 }
 
