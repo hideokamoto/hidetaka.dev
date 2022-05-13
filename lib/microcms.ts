@@ -54,6 +54,8 @@ export const listEndedEvents = async () => {
   }>({
     endpoint: 'events',
     queries: {
+      orders: '-date',
+      limit: 20,
       filters: `date[less_than]${thisMonth}`,
     },
   })
@@ -67,6 +69,7 @@ export const listUpcomingEvents = async () => {
   }>({
     endpoint: 'events',
     queries: {
+      orders: '-date',
       filters: `date[greater_than]${thisMonth}`,
     },
   })
