@@ -18,7 +18,7 @@ export const BookList: FC<
           <p className='mt-4 text-gray-500'></p>
         </div>
         <div className='mt-16 space-y-16'>
-          <div className='grid grid-cols-2 gap-8'>
+          <div className='grid md:grid-cols-2 gap-8'>
             {books.map((book) => {
               return <BookListItem key={book.url} book={book} />
             })}
