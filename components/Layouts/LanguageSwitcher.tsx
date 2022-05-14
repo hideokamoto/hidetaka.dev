@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 
 export const LanguageSwitcher: FC = () => {
-  const { locale: currentLocale, locales } = useRouter()
+  const { locale: currentLocale, locales, pathname } = useRouter()
   if (!locales) return null
   return (
     <>
@@ -19,7 +19,7 @@ export const LanguageSwitcher: FC = () => {
           )
         }
         return (
-          <Link href='/' passHref locale={locale} key={locale}>
+          <Link href={pathname} passHref locale={locale} key={locale}>
             <a className='whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900 mr-4'>
               {locale}
             </a>

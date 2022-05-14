@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage, GetStaticPropsResult } from 'next'
 import Parser from 'rss-parser'
 import { FeedContainer } from '../components/Feeds/FeedContainer'
 import { FeedDataSource, FeedItem } from '../components/Feeds/FeedItems'
+import { isJapanese } from '../lib/i18n/utils'
 
 type Feed = {
   title: string
@@ -128,27 +129,27 @@ type WPPost = {
   link: string
   id: string
 }
-const loadWPPosts = async (): Promise<FeedItem[]> => {
+const loadWPPosts = async (locale: 'en' | 'ja'): Promise<FeedItem[]> => {
   const dataSource: FeedDataSource = {
     href: 'https://wp-kyoto.net',
     name: 'WP Kyoto Blog',
     color: 'bg-indigo-100 text-indigo-800',
   }
-  const wp = [
-    ...(await fetch('https://api.wp-kyoto.net/wp-json/wp/v2/posts').then((data) => data.json())),
-    ...(await fetch('https://api.wp-kyoto.net/wp-json/wp/v2/posts?filter[lang]=en').then((data) =>
-      data.json(),
-    )),
-  ].map(
-    (post: WPPost): FeedItem => ({
-      title: post.title.rendered,
-      description: post.excerpt.rendered,
-      href: post.link.replace(/api./, ''),
-      datetime: post.date,
-      dataSource,
-      id: post.id,
-    }),
-  )
+  const wp = await fetch(`https://api.wp-kyoto.net/wp-json/wp/v2/posts?filter[lang]=${locale}`)
+    .then((data) => data.json())
+    .then((posts) => {
+      return posts.map(
+        (post: WPPost): FeedItem => ({
+          title: post.title.rendered,
+          description: post.excerpt.rendered,
+          href: post.link.replace(/api./, ''),
+          datetime: post.date,
+          dataSource,
+          id: post.id,
+        }),
+      )
+    })
+
   return wp
 }
 
@@ -156,13 +157,13 @@ type StaticProps = {
   posts: FeedItem[]
 }
 
-export const getStaticProps: GetStaticProps = async (): Promise<
-  GetStaticPropsResult<StaticProps>
-> => {
-  const wp = await loadWPPosts()
-  const devto = await loadDevToPosts()
-  const zenn = await loadZennPosts()
-  const qiita = await loadQiitaPosts()
+export const getStaticProps: GetStaticProps = async (
+  context,
+): Promise<GetStaticPropsResult<StaticProps>> => {
+  const wp = await loadWPPosts(isJapanese(context.locale) ? 'ja' : 'en')
+  const devto = isJapanese(context.locale) ? [] : await loadDevToPosts()
+  const zenn = isJapanese(context.locale) ? await loadZennPosts() : []
+  const qiita = isJapanese(context.locale) ? await loadQiitaPosts() : []
   return {
     props: {
       posts: [...wp, ...devto, ...zenn, ...qiita].sort((a: FeedItem, b: FeedItem) => {
