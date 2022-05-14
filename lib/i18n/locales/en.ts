@@ -3,7 +3,7 @@ export const en = {
   WRITINGS: 'Writings',
   EVENTS: 'Events',
   'en-US': 'English',
-  'ja-JP': 'Japanese',
+  'ja-JP': '日本語',
   BOOKS: 'Books',
   BOOKS_DESCRIPTION: 'Published physical books / E-Books / Online courses',
   NPM_PACKAGES: 'NPM Packages',

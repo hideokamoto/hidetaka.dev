@@ -1,4 +1,4 @@
-import { PropsWithChildren, FC, ReactNode } from 'react'
+import { PropsWithChildren, FC } from 'react'
 
 export const FeedContainer: FC<
   PropsWithChildren<{
