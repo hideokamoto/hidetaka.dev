@@ -1,10 +1,12 @@
-import { Fragment } from 'react'
+import { FC, Fragment } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { ChartBarIcon, CursorClickIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { classNames } from '../../lib/classNames'
 import { SocialIcons } from '../Profile/SocialIcons'
+import { useRouter } from 'next/router'
+import { LanguageSwitcher } from './LanguageSwitcher'
 
 const projects = [
   {
@@ -108,6 +110,7 @@ export function Navigation() {
             </Link>
           </Popover.Group>
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
+            <LanguageSwitcher />
             <SocialIcons className='mr-2' />
           </div>
         </div>
