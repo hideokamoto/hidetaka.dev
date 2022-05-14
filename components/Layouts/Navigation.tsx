@@ -1,35 +1,50 @@
-import { FC, Fragment } from 'react'
+import { FC, Fragment, useMemo } from 'react'
 import { Popover, Transition } from '@headlessui/react'
 import Link from 'next/link'
 import { ChartBarIcon, CursorClickIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { classNames } from '../../lib/classNames'
 import { SocialIcons } from '../Profile/SocialIcons'
-import { useRouter } from 'next/router'
 import { LanguageSwitcher } from './LanguageSwitcher'
-
-const projects = [
-  {
-    name: 'Books',
-    description: 'Published physical books / E-Books / Online courses',
-    href: '/projects/books',
-    icon: ChartBarIcon,
-  },
-  {
-    name: 'NPM packages',
-    description: "NPM packages I've published before.",
-    href: '/projects/npmjs',
-    icon: CursorClickIcon,
-  },
-  {
-    name: 'WordPress Plugins',
-    description: "WordPress plugins I've published before.",
-    href: '/projects/wordpress-plugins',
-    icon: CursorClickIcon,
-  },
-]
+import { useLocale } from '../../lib/i18n/useLocale'
 
 export function Navigation() {
+  const { t } = useLocale()
+  const { projects, menus } = useMemo(() => {
+    return {
+      projects: [
+        {
+          name: t.BOOKS,
+          description: t.BOOKS_DESCRIPTION,
+          href: '/projects/books',
+        },
+        {
+          name: t.NPM_PACKAGES,
+          description: t.NPM_PACKAGES_DESCRIPTION,
+          href: '/projects/npmjs',
+        },
+        {
+          name: t.WP_PLUGINS,
+          description: t.WP_PLUGINS_DESCRIPTION,
+          href: '/projects/wordpress-plugins',
+        },
+      ],
+      menus: [
+        {
+          name: t.WRITINGS,
+          href: '/blogs',
+        },
+        {
+          name: t.EVENTS,
+          href: '/events',
+        },
+        {
+          name: 'Stripe',
+          href: 'https://stripe.com',
+        },
+      ],
+    }
+  }, [t])
   return (
     <Popover className='relative bg-white'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6'>
@@ -58,7 +73,7 @@ export function Navigation() {
                       'group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500',
                     )}
                   >
-                    <span>Projects</span>
+                    <span>{t.PROJECT}</span>
                     <ChevronDownIcon
                       className={classNames(
                         open ? 'text-gray-600' : 'text-gray-400',
@@ -99,15 +114,13 @@ export function Navigation() {
                 </>
               )}
             </Popover>
-            <Link href='/blogs' passHref>
-              <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Writings</a>
-            </Link>
-            <Link href='/events' passHref>
-              <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Events</a>
-            </Link>
-            <Link href='https://stripe.com' passHref>
-              <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Stripe</a>
-            </Link>
+            {menus.map((menu) => (
+              <Link key={menu.name} href={menu.href} passHref>
+                <a className='text-base font-medium text-gray-500 hover:text-gray-900'>
+                  {menu.name}
+                </a>
+              </Link>
+            ))}
           </Popover.Group>
           <div className='hidden md:flex items-center justify-end md:flex-1 lg:w-0'>
             <LanguageSwitcher />
@@ -127,7 +140,7 @@ export function Navigation() {
       >
         <Popover.Panel
           focus
-          className='absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden'
+          className='absolute z-10 top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden'
         >
           <div className='rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50'>
             <div className='pt-5 pb-6 px-5'>
@@ -148,31 +161,25 @@ export function Navigation() {
               </div>
               <div className='mt-6'>
                 <nav className='grid gap-y-8'>
+                  {menus.map((menu) => (
+                    <Link key={menu.name} href={menu.href} passHref>
+                      <a className='-m-3 p-3 flex items-center rounded-md hover:bg-gray-50'>
+                        <span className='ml-3 text-base font-medium text-gray-900'>
+                          {menu.name}
+                        </span>
+                      </a>
+                    </Link>
+                  ))}
                   {projects.map((item) => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className='-m-3 p-3 flex items-center rounded-md hover:bg-gray-50'
-                    >
-                      <item.icon
-                        className='flex-shrink-0 h-6 w-6 text-indigo-600'
-                        aria-hidden='true'
-                      />
-                      <span className='ml-3 text-base font-medium text-gray-900'>{item.name}</span>
-                    </a>
+                    <Link key={item.name} href={item.href}>
+                      <a className='-m-3 p-3 flex items-center rounded-md hover:bg-gray-50'>
+                        <span className='ml-3 text-base font-medium text-gray-900'>
+                          {item.name}
+                        </span>
+                      </a>
+                    </Link>
                   ))}
                 </nav>
-              </div>
-            </div>
-            <div className='py-6 px-5 space-y-6'>
-              <div className='grid grid-cols-2 gap-y-4 gap-x-8'>
-                <a href='#' className='text-base font-medium text-gray-900 hover:text-gray-700'>
-                  Pricing
-                </a>
-
-                <a href='#' className='text-base font-medium text-gray-900 hover:text-gray-700'>
-                  Docs
-                </a>
               </div>
             </div>
           </div>
