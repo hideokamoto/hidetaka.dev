@@ -19,6 +19,12 @@ const projects = [
     href: '/projects/npmjs',
     icon: CursorClickIcon,
   },
+  {
+    name: 'WordPress Plugins',
+    description: "WordPress plugins I've published before.",
+    href: '/projects/wordpress-plugins',
+    icon: CursorClickIcon,
+  },
 ]
 
 export function Navigation() {
