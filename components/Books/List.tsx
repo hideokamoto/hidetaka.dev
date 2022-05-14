@@ -12,9 +12,11 @@ export const BookList: FC<
   return (
     <ListPageLayout title={title}>
       <div className='mt-16 space-y-16'>
-        {books.map((book) => {
-          return <BookListItem key={book.url} book={book} />
-        })}
+        <div className='grid md:grid-cols-2 gap-8'>
+          {books.map((book) => {
+            return <BookListItem key={book.url} book={book} />
+          })}
+        </div>
       </div>
       {children}
     </ListPageLayout>
