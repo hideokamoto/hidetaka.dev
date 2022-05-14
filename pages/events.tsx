@@ -18,6 +18,8 @@ export const getStaticProps: GetStaticProps<{
 }> = async () => {
   const endedEvents = await listEndedEvents()
   const upcomingEvents = await listUpcomingEvents()
+
+  console.log(endedEvents)
   return {
     props: {
       endedEvents: endedEvents.sort((a, b) => {
