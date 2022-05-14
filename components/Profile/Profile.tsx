@@ -29,7 +29,7 @@ export const Profile: FC<{
               <dl className='sm:col-span-1'>
                 <dt className='text-sm font-medium text-gray-500'>Preferred Name</dt>
                 <dd className='mt-1 text-sm text-gray-900'>
-                  ひで <small>pronounced “Hee Day”</small>
+                  Hide <small>(ひで pronounced “Hee Day”)</small>
                 </dd>
               </dl>
               <dl className='sm:col-span-1'>
