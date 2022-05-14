@@ -97,6 +97,9 @@ export function Navigation() {
                 </>
               )}
             </Popover>
+            <Link href='/blogs' passHref>
+              <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Writings</a>
+            </Link>
             <Link href='/events' passHref>
               <a className='text-base font-medium text-gray-500 hover:text-gray-900'>Events</a>
             </Link>
