@@ -1,5 +1,6 @@
 import { FC, PropsWithChildren } from 'react'
 import { MicroCMSProjectsRecord } from '../../lib/microcms'
+import { ListPageLayout } from '../Layouts/ListPageLayout'
 import { BookListItem } from './ListItem'
 
 export const BookList: FC<
@@ -9,23 +10,15 @@ export const BookList: FC<
   }>
 > = ({ books, title = 'Book & Online courses', children }) => {
   return (
-    <div className='bg-white'>
-      <div className='max-w-2xl mx-auto py-12 px-4 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8'>
-        <div className='max-w-3xl mx-auto text-center'>
-          <h2 className='text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl'>
-            {title}
-          </h2>
-          <p className='mt-4 text-gray-500'></p>
+    <ListPageLayout title={title}>
+      <div className='mt-16 space-y-16'>
+        <div className='grid md:grid-cols-2 gap-8'>
+          {books.map((book) => {
+            return <BookListItem key={book.url} book={book} />
+          })}
         </div>
-        <div className='mt-16 space-y-16'>
-          <div className='grid md:grid-cols-2 gap-8'>
-            {books.map((book) => {
-              return <BookListItem key={book.url} book={book} />
-            })}
-          </div>
-        </div>
-        {children}
       </div>
-    </div>
+      {children}
+    </ListPageLayout>
   )
 }

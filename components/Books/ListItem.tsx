@@ -8,10 +8,7 @@ export const BookListItem: FC<{
   book: MicroCMSProjectsRecord
 }> = ({ book }) => {
   return (
-    <div
-      key={book.title}
-      className='flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-center'
-    >
+    <div className='flex flex-col-reverse lg:grid lg:grid-cols-12 lg:gap-x-8 lg:items-center'>
       <div className={'mt-6 lg:mt-0 lg:row-start-1 lg:col-span-9'}>
         <a href={book.url} target='_blank' rel='noopener noreferrer'>
           <p className='inline-block mb-2'>
