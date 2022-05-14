@@ -1,8 +1,3 @@
-Hidetaka(Hide) is a Developer Advocate at Stripe, where he works on writing, coding, and presenting online payments.
-He organized the 1st Stripe user conference in Japan named {% externalLink
-    class="text-underline text-indigo-600"
-    href="(https://connect2019.jpstripes.com/"
-    label="JP_Stripes Connect 201"
-/%}.
+Hide (ひで pronounced “Hee-Day”) is a Developer Advocate at {% externalLink class="text-underline text-indigo-600" href="https://stripe.com/docs" label="Stripe" /%}, where he works on writing, coding, and teaching how to integrate online payments. He has organized several community conferences including WordCamp Kyoto and {% externalLink class="text-underline text-indigo-600" href="https://connect2019.jpstripes.com/" label="JP_Stripes Connect" /%}, the first Stripe user conference in Japan. Prior to Stripe, Hide was a lead Software Engineer at {% externalLink class="text-underline text-indigo-600" href="https://en.digitalcube.jp/" label="DigitalCube" /%}, focused on building plugins, open source, and developing SaaS application dashboards. Hide lives in Hyogo, Japan with his family and two cats.
 
-Hide lives in Hyogo in Japan and worked to maintain a SaaS application dashboard before joining Stripe.
+
