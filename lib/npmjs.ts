@@ -1,6 +1,8 @@
 export const listMyNPMPackages = async () => {
-  const packages = await searchNPMPackages('text=author:hideokamoto')
-  return packages
+  const { objects: packages } = await searchNPMPackages('text=author:hideokamoto')
+  const { objects: wpkyotoPackages } = await searchNPMPackages('text=@wpkyoto')
+  const { objects: talkyjsPackages } = await searchNPMPackages('text=@talkyjs')
+  return [...packages, ...wpkyotoPackages, ...talkyjsPackages]
 }
 export type NPMPackageDetail = {
   name: string
@@ -9,7 +11,7 @@ export type NPMPackageDetail = {
   description: string
   keywords: string[]
   date: string
-  linls: {
+  links: {
     npm: string
     homepage?: string
     repositoty?: string
@@ -50,7 +52,7 @@ export type NPMRegistrySearchResponse = {
 
 export const searchNPMPackages = async (query: string): Promise<NPMRegistrySearchResponse> => {
   try {
-    const res = await fetch(`https://registry.npmjs.org/-/v1/search?${query}`)
+    const res = await fetch(`https://registry.npmjs.org/-/v1/search?${query}&size=50`)
     const result = await res.json()
     return result
   } catch (e) {
