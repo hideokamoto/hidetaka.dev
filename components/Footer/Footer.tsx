@@ -1,4 +1,5 @@
 import { FC } from 'react'
+import { LanguageSwitcher } from '../Layouts/LanguageSwitcher'
 import { SocialIcons } from '../Profile/SocialIcons'
 
 export const Footer: FC = () => {
@@ -7,6 +8,7 @@ export const Footer: FC = () => {
       <div className='max-w-7xl mx-auto p-12 px-4 sm:px-6  lg:px-8'>
         <div className='md:flex md:items-center md:justify-between pb-4'>
           <div className='flex justify-center space-x-6 md:order-2'>
+            <LanguageSwitcher />
             <SocialIcons className='text-gray-400 hover:text-gray-500' />
           </div>
           <div className='mt-8 md:mt-0 md:order-1'>

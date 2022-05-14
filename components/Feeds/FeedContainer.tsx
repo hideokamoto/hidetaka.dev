@@ -1,4 +1,4 @@
-import { PropsWithChildren, FC, ReactNode } from 'react'
+import { PropsWithChildren, FC } from 'react'
 
 export const FeedContainer: FC<
   PropsWithChildren<{
@@ -15,7 +15,7 @@ export const FeedContainer: FC<
           </h2>
           <p className='mt-3 text-xl text-gray-500 sm:mt-4'>{description}</p>
         </div>
-        <div className='mt-12 grid gap-16 pt-12 lg:grid-cols-3 lg:gap-x-5 lg:gap-y-12'>
+        <div className='mt-12 grid gap-16 pt-12 md:grid-cols-2 md:gap-x-5 md:gap-y-12 lg:grid-cols-3'>
           {children}
         </div>
       </div>

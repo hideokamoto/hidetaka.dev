@@ -18,7 +18,7 @@ export type FeedItem = {
 }
 export const FeedItem: FC<FeedItem> = ({ href, title, description, datetime, dataSource }) => {
   return (
-    <div>
+    <div style={{ overflow: 'hidden' }}>
       <div>
         <a href={dataSource.href} className='inline-block'>
           <span
@@ -33,12 +33,9 @@ export const FeedItem: FC<FeedItem> = ({ href, title, description, datetime, dat
       </div>
       <a href={href} className='block mt-4'>
         <p className='text-xl font-semibold text-gray-900'>{title}</p>
-        <p
-          className='mt-3 text-base text-gray-500'
-          dangerouslySetInnerHTML={{
-            __html: description,
-          }}
-        />
+        <p className='mt-3 text-base text-gray-500'>
+          {description.replace(/<[^>]*>?/gm, '').replace(/&hellip;/, '...')}
+        </p>
       </a>
       <div className='mt-6 flex items-center'>
         {/**
@@ -49,7 +46,7 @@ export const FeedItem: FC<FeedItem> = ({ href, title, description, datetime, dat
           </a>
         </div>
          */}
-        <div className='ml-3'>
+        <div className='ml-0'>
           {/**
           <p className='text-sm font-medium text-gray-900'>
             <a href={author.href}>{author.name}</a>
