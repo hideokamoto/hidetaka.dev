@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps<{
         return new Date(b.date).getTime() - new Date(a.date).getTime()
       }),
       upcomingEvents: upcomingEvents.sort((a, b) => {
-        return new Date(b.date).getTime() - new Date(a.date).getTime()
+        return new Date(a.date).getTime() - new Date(b.date).getTime()
       }),
     },
     revalidate: 1 * 60 * 60,
