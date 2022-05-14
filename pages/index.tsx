@@ -7,6 +7,7 @@ import { Hero } from '../components/Hero/Hero'
 import { MarkdocContent } from '../components/markdoc/MarkdocContent'
 import { Interest } from '../components/Profile/Interests'
 import { Profile } from '../components/Profile/Profile'
+import { isJapanese } from '../lib/i18n/utils'
 import { loadMarkdownFile } from '../lib/markdocs/loader'
 import {
   listFeaturedBooks,
@@ -55,15 +56,17 @@ export const getStaticProps: GetStaticProps<{
   }
   events: MicroCMSEventsRecord[]
   featuredBooks: MicroCMSProjectsRecord[]
-}> = async () => {
+}> = async (context) => {
   const heroArticle = loadMarkdownFile('contents/profiles/hero.md')
   const heroContent = (heroArticle as any).children
   heroContent[0].attributes = {
     ...heroContent[0].attributes,
     className: 'mt-3 text-base text-gray-500 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl',
   }
-
-  const speakerBio = loadMarkdownFile('contents/profiles/speakerProfile.md')
+  const speakerBioFileName = isJapanese(context.locale)
+    ? 'speakerProfile.ja.md'
+    : 'speakerProfile.md'
+  const speakerBio = loadMarkdownFile(`contents/profiles/${speakerBioFileName}`)
   const profiles = {
     hero: JSON.stringify(heroContent),
     speakerBio: JSON.stringify(speakerBio),

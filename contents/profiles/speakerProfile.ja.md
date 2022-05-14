@@ -1,0 +1,3 @@
+{% externalLink class="text-underline text-indigo-600" href="https://stripe.com/docs" label="Stripe" /%}のディベロッパーアドボケイトとして、オンライン決済の組み込み方法の紹介やサンプルコードの作成、イベントでの登壇などに取り組む。
+複数の開発者コミュニティに参加し、WordCamp Kyoto 2017や{% externalLink class="text-underline text-indigo-600" href="https://connect2019.jpstripes.com/" label="JP_Stripes Connect 2019" /%}など、ユーザーカンファレンスの実行委員長を務めた経験を持つ。  
+{% externalLink class="text-underline text-indigo-600" href="https://en.digitalcube.jp/" label="DigitalCube" /%}にてSaaSのダッシュボードアプリやServerlessなアプリケーション開発に取り込んだ経験があり、JavaScript / TypeScriptやReact / AWSなどを主に利用する。

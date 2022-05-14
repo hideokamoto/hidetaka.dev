@@ -10,4 +10,8 @@ export const ja = {
   NPM_PACKAGES_DESCRIPTION: "NPM packages I've published before.",
   WP_PLUGINS: 'WordPressプラグイン',
   WP_PLUGINS_DESCRIPTION: "WordPress plugins I've published before.",
+  FULL_NAME: '氏名',
+  MY_FULL_NAME: '岡本 秀高',
+  LOCATIONS: '主な活動地域',
+  MY_LOCATIONS: '関西圏、たまに東京',
 }

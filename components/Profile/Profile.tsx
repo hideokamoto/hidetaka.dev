@@ -1,9 +1,12 @@
 import { FC } from 'react'
+import { useLocale } from '../../lib/i18n/useLocale'
+import { isJapanese } from '../../lib/i18n/utils'
 import { MarkdocContent } from '../markdoc/MarkdocContent'
 
 export const Profile: FC<{
   speakerBio: string
 }> = ({ speakerBio }) => {
+  const { t, locale } = useLocale()
   return (
     <div className='bg-white shadow-lg overflow-hidden sm:rounded-lg'>
       <div className='px-4 py-5 sm:px-6'>
@@ -23,18 +26,22 @@ export const Profile: FC<{
           <div className='md:col-span-8'>
             <div className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>
               <dl className='sm:col-span-1'>
-                <dt className='text-sm font-medium text-gray-500'>Full name</dt>
-                <dd className='mt-1 text-sm text-gray-900'>Hidetaka Okamoto</dd>
+                <dt className='text-sm font-medium text-gray-500'>{t.FULL_NAME}</dt>
+                <dd className='mt-1 text-sm text-gray-900'>{t.MY_FULL_NAME}</dd>
               </dl>
+              {isJapanese(locale) ? (
+                <div className='sm:col-span-1' />
+              ) : (
+                <dl className='sm:col-span-1'>
+                  <dt className='text-sm font-medium text-gray-500'>Preferred Name</dt>
+                  <dd className='mt-1 text-sm text-gray-900'>
+                    Hide <small>(ひで pronounced “Hee Day”)</small>
+                  </dd>
+                </dl>
+              )}
               <dl className='sm:col-span-1'>
-                <dt className='text-sm font-medium text-gray-500'>Preferred Name</dt>
-                <dd className='mt-1 text-sm text-gray-900'>
-                  Hide <small>(ひで pronounced “Hee Day”)</small>
-                </dd>
-              </dl>
-              <dl className='sm:col-span-1'>
-                <dt className='text-sm font-medium text-gray-500'>Locations</dt>
-                <dd className='mt-1 text-sm text-gray-900'>Osaka &amp; Tokyo, Japan</dd>
+                <dt className='text-sm font-medium text-gray-500'>{t.LOCATIONS}</dt>
+                <dd className='mt-1 text-sm text-gray-900'>{t.MY_LOCATIONS}</dd>
               </dl>
               <dl className='sm:col-span-1'>
                 <dt className='text-sm font-medium text-gray-500'>Awards</dt>
