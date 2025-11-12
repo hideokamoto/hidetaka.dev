@@ -105,6 +105,7 @@ export const getStaticProps: GetStaticProps<{
     props: {
       plugins,
     },
+    revalidate: 1 * 60 * 60, // Revalidate every hour
   }
 }
 
